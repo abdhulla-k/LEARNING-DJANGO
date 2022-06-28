@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body 
+    style="margin: 0; padding: 0;">
+    <section>
+        <div>
+            <ul>
+
+                {% for item in item_details %}
+                <li>
+                    <a 
+                       href="{% url 'food:detail' item.id %}"
+                       style="text-decoration: none;">
+                        {{ item.id }} -- {{ item.item_name }}
+                    </a>
+                </li>
+                {% endfor %}
+                
+            </ul>
+        </div>
+    </section>
+    <!-- <section>
+        {% for item in item_details %}
+        <div style="background: rgb(151, 151, 236); 
+                    width: 50%; 
+                    border: solid black 1px; 
+                    text-align: center;
+                    margin-right: 25%;
+                    margin-left: 25%;">
+            <h1>{{ item.item_name }}</h1>
+            <h3>{{ item.itm_desc }}</h3>
+            <h6>{{ item.itm_price}}</h6>
+        </div>
+        {% endfor %}
+    </section> -->
+</body>
+</html>
