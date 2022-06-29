@@ -12,15 +12,23 @@
     {% block body %}
     {% for item in item_details %}
     <div class="row">
+
         <div class="col-md-3 offset-md-2">
             <img src="{{ item.item_image }}" height="300px" width="300px"  class="card">
         </div>
+
         <div class="col-md-4">
             <h3>{{ item.item_name }}</h3>
             <h5>{{ item.itm_desc }}</h5>
             <h6>$ {{ item.itm_price }}</h6>
         </div>
+
         <div class="col-md-2">
+            <a 
+               href="{% url 'food:detail' item.id %}"
+               class="btn btn-success">
+                Details
+            </a>
         </div>
     </div>
     {% endfor %}
