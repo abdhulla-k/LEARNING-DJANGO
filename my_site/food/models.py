@@ -6,6 +6,10 @@ class Item( models.Model ):
     def __str__(self):
         return self.item_name
 
-    item_name = models.CharField( max_length= 200 )
-    itm_desc = models.CharField( max_length= 200 )
+    item_name = models.CharField( max_length = 200 )
+    itm_desc = models.CharField( max_length = 200 )
     itm_price = models.IntegerField()
+    item_image = models.CharField(
+        max_length = 500, 
+        default= 'https://www.dirtyapronrecipes.com/wp-content/uploads/2015/10/food-placeholder.png'
+    )

@@ -10,27 +10,20 @@
 </head>
 <body>
     {% block body %}
-    <section>
-        <div">
-            <ul>
-
-                {% for item in item_details %}
-                <li
-                    class="list-item">
-                    <a 
-                       href="{% url 'food:detail' item.id %}">
-                       
-                        <h3
-                            class="h3-decoration">
-                            {{ item.id }} -- {{ item.item_name }}
-                        </h3>
-                    </a>
-                </li>
-                {% endfor %}
-                
-            </ul>
+    {% for item in item_details %}
+    <div class="row">
+        <div class="col-md-3 offset-md-2">
+            <img src="{{ item.item_image }}" height="300px" width="300px"  class="card">
         </div>
-    </section>
+        <div class="col-md-4">
+            <h3>{{ item.item_name }}</h3>
+            <h5>{{ item.itm_desc }}</h5>
+            <h6>$ {{ item.itm_price }}</h6>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    {% endfor %}
     {% endblock %}
 </body>
 </html>
