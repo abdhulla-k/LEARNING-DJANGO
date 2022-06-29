@@ -1,0 +1,16 @@
+body {
+    background: grey
+}
+
+.detail {
+    background: rgb(151, 151, 236); 
+    width: 50%; 
+    border: solid black 1px; 
+    text-align: center;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+.item-decoration {
+    color: black;
+}

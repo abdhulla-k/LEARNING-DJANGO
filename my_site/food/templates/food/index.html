@@ -1,3 +1,5 @@
+{% extends 'food/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body 
-    style="margin: 0; padding: 0;">
+<body>
+    {% block body %}
     <section>
-        <div>
+        <div">
             <ul>
 
                 {% for item in item_details %}
-                <li>
+                <li
+                    class="list-item">
                     <a 
-                       href="{% url 'food:detail' item.id %}"
-                       style="text-decoration: none;">
-                        {{ item.id }} -- {{ item.item_name }}
+                       href="{% url 'food:detail' item.id %}">
+                       
+                        <h3
+                            class="h3-decoration">
+                            {{ item.id }} -- {{ item.item_name }}
+                        </h3>
                     </a>
                 </li>
                 {% endfor %}
@@ -25,19 +31,6 @@
             </ul>
         </div>
     </section>
-    <!-- <section>
-        {% for item in item_details %}
-        <div style="background: rgb(151, 151, 236); 
-                    width: 50%; 
-                    border: solid black 1px; 
-                    text-align: center;
-                    margin-right: 25%;
-                    margin-left: 25%;">
-            <h1>{{ item.item_name }}</h1>
-            <h3>{{ item.itm_desc }}</h3>
-            <h6>{{ item.itm_price}}</h6>
-        </div>
-        {% endfor %}
-    </section> -->
+    {% endblock %}
 </body>
 </html>
