@@ -15,7 +15,10 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- header -->
     <header>
+
+        <!-- navbar -->
         <nav class="navbar navbar-dark bg-dark">
             <a 
                href="#" 
@@ -25,7 +28,7 @@
 
             <div class="navbar">
                 <a 
-                   href="#" 
+                   href="{% url 'food:create_item' %}" 
                    class="nav-item header-nav">
                     Add Item
                 </a>
@@ -41,8 +44,11 @@
                 </a>
             </div>
         </nav>
+        <!-- /navbar -->
 
     </header>
+    <!-- /header -->
+
     {% block body %}
     <!-- use these tags to extend this page to other pages. use these tags there too -->
     {% endblock %}

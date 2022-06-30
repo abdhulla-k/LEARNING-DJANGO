@@ -1,11 +1,13 @@
-from re import template
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from .forms import ItemForm
 from .models import Item
 from django.template import loader
 
 # Create your views here.
 
+# home page
 def index( request ):
     item_details = Item.objects.all()
     context = {
@@ -16,6 +18,7 @@ def index( request ):
 def item( request ):
     return HttpResponse( "This is an item" )
 
+# to show the details of product
 def detail( request, item_id ):
     item = Item.objects.get( pk = item_id )
     context = {
@@ -23,5 +26,13 @@ def detail( request, item_id ):
     }
     return render( request, 'food/detail.html', context )
 
-# def head( request ):
-#     return HttpResponse( '<h1>This is the heading</h1>' )
+# create new item. 
+def create_item( request ):
+    form = ItemForm( request.POST or None )
+    
+    if form.is_valid():
+        form.save()
+        return redirect( 'food:index' )
+
+    return render( request, 'food/item-form.html', { 'form': form } )
+
