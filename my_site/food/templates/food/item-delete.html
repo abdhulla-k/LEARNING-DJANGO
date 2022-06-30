@@ -1,0 +1,14 @@
+<div class="row">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Arye you shur you want to delete {{ item.item_name }}</h2>
+        <button 
+            type="submit"
+            style="
+                background: red; border: black arial 3px; 
+                border-radius: 5px; 
+                height: 30px;">
+            Confirm
+        </button>
+    </form>
+</div>
