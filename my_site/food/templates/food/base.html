@@ -49,6 +49,16 @@
     </header>
     <!-- /header -->
 
+    <!-- success messages -->
+    {% if messages %}
+       {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                 {{ message }}
+            </div>
+       {% endfor %}
+    {% endif %}
+    <!-- /success message -->
+
     {% block body %}
     <!-- use these tags to extend this page to other pages. use these tags there too -->
     {% endblock %}
