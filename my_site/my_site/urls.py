@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 from users import views as user_views
 from django.contrib.auth import views as authentication_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +36,11 @@ urlpatterns = [
         'logout/', 
         authentication_views.LogoutView.as_view( template_name = 'users/logout.html' ), 
         name = 'logout' 
-    )
+    ),
+    # profile page
+    path( 'profile/', user_views.profile_page, name = 'profile' )
 ]
+
+urlpatterns += [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
