@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-
+from django.views.generic.list import ListView
 from .forms import ItemForm
 from .models import Item
 from django.template import loader
@@ -8,12 +8,10 @@ from django.template import loader
 # Create your views here.
 
 # home page
-def index( request ):
-    item_details = Item.objects.all()
-    context = {
-        'item_details': item_details
-    }
-    return render( request, 'food/index.html', context )
+class IndexClassView( ListView ):
+    model = Item
+    template_name = 'food/index.html'
+    context_object_name = 'item_details'
 
 def item( request ):
     return HttpResponse( "This is an item" )
