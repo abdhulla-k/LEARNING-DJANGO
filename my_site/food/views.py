@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 from .forms import ItemForm
 from .models import Item
 from django.template import loader
@@ -29,15 +30,27 @@ class FoodDetail( DetailView ):
     model = Item
     template_name = 'food/detail.html'
 
-# create new item. 
-def create_item( request ):
-    form = ItemForm( request.POST or None )
+# # create new item. 
+# def create_item( request ):
+#     form = ItemForm( request.POST or None )
     
-    if form.is_valid():
-        form.save()
-        return redirect( 'food:index' )
+#     if form.is_valid():
+#         form.save()
+#         return redirect( 'food:index' )
 
-    return render( request, 'food/item-form.html', { 'form': form } )
+#     return render( request, 'food/item-form.html', { 'form': form } )
+
+
+# this is a class based view for create a new item
+class CreateItem( CreateView ):
+    model = Item
+    fields = [ 'item_name', 'itm_desc', 'itm_price', 'item_image' ]
+    template_name = 'food/item-form.html'
+
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        
+        return super().form_valid(form)
 
 # update or edit item
 def update_item( request, id ):
