@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- bootstrap link CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+          crossorigin="anonymous">
+    <!-- /bootstrap link CSS only -->
+
+    <!-- link css file like below. add 'load static' tag like above this page -->
+    <link rel="stylesheet" href="{% static 'food/base.css' %}">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- header -->
+    <header>
+
+        <!-- navbar -->
+        <nav class="navbar navbar-dark bg-dark">
+            <a 
+               href="#" 
+               class="navbar-brand header-nav">
+                FoodApp
+            </a>
+
+            <div class="navbar">
+                <a 
+                   href="{% url 'food:create_item' %}" 
+                   class="nav-item header-nav">
+                    Add Item
+                </a>
+                <a 
+                   href="#" 
+                   class="nav-item header-nav">
+                    Delete Item
+                </a>
+                <a 
+                   href="#" 
+                   class="nav-item header-nav">
+                    View Item
+                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="nav-item header-nav">Logout</a>
+                    <a href="{% url 'profile' %}" class="nav-item header-nav">Profile</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-item header-nav">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+        <!-- /navbar -->
+
+    </header>
+    <!-- /header -->
+
+    <!-- success messages -->
+    {% if messages %}
+       {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                 {{ message }}
+            </div>
+       {% endfor %}
+    {% endif %}
+    <!-- /success message -->
+
+    {% block body %}
+    <!-- use these tags to extend this page to other pages. use these tags there too -->
+    {% endblock %}
+</body>
+</html>

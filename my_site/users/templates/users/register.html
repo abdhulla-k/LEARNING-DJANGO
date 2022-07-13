@@ -1,0 +1,32 @@
+{% extends 'food/index.html' %}
+
+{% block body  %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card bg-secondary text-white">
+
+                <div style="height: 50px;" class="car-header text-white bg-info">
+                    <div style="margin-left: 17px;" class="card-title">
+                        <h3>Register</h3>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for fields in form %}
+                            <div class="form-group">
+                                {{ fields.name }}
+                                <br>
+                                {{ fields }}
+                            </div>
+                        {% endfor %}
+                        <button class="btn btn-info" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

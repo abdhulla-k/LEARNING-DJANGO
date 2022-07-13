@@ -1,0 +1,31 @@
+body {
+    margin: 0; padding: 0;
+    background: rgb(179, 177, 177);
+}
+
+.header-nav {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.h3-decoration {
+    color: green;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* .list-item {
+    background: lightblue;
+    border: solid 1px black;
+    list-style: none;
+} */
+
+a {
+    text-decoration: none;
+}
